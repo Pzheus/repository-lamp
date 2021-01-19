@@ -1,25 +1,27 @@
-var turnOn = document.getElementById("turnOn")
-var turnOff = document.getElementById("turnOff")
+var ligado = document.getElementById("ligado")
+var desligado = document.getElementById("desligado")
 var lampada = document.getElementById("lampada")
 
- function islampadaBroken () {
+ function vlampQuebrada () {
     return lampada.src.indexOf ("quebrada") > -1
 } 
- function lampadaOn () {
-     if (!islampadaBroken()) {
-    lampada.src = "./imagens/ligada.jpg"
-    }
-} 
- function lampadaOff () {
-     if (!islampadaBroken())
-    lampada.src = "./imagens/desligada.jpg"
-}
-function lampadaBroken () {
-    lampada.src = "./imagens/quebrada.jpg"
+
+ function lampLigada () {
+    if (!vlampQuebrada()) 
+        lampada.src = "imagens/ligada.jpg"    
 } 
 
-turnOn.addEventListener("click", lampadaOn)
-turnOff.addEventListener("click", lampadaOff)
-lampada.addEventListener("mouseenter", lampadaOn)
-lampada.addEventListener("mouseleave", lampadaOff)
-lampada.addEventListener("dblclick", lampadaBroken)
+ function lampDesligada () {
+    if (!vlampQuebrada())
+        lampada.src = "imagens/desligada.jpg"
+}
+
+function lampQuebrada () {
+    lampada.src = "imagens/quebrada.jpg"
+} 
+
+ligado.addEventListener("click", lampLigada)
+desligado.addEventListener("click", lampDesligada)
+lampada.addEventListener("mouseenter", lampLigada)
+lampada.addEventListener("mouseleave", lampDesligada)
+lampada.addEventListener("dblclick", lampQuebrada)
